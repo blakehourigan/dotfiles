@@ -1,1 +1,0 @@
-My NVIM configuration directory
