@@ -19,11 +19,27 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
             require("lspconfig").lua_ls.setup { capabililties = capabilities }
             require("lspconfig").rust_analyzer.setup {}
+            require("lspconfig").clangd.setup {}
+            require("lspconfig").ardLangServ.setup {}
+            require("lspconfig").ruff.setup {}
+            require("lspconfig").pyright.setup {
+                settings = {
+                    pyright = {
+                        disableOrganizeImports = true,
+                    },
+                },
+            }
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
                     if not client then return end
+
+                    if client.name == 'ruff' then
+                        --disable hover in favor of pyright
+                        client.server_capabilities.hoverProvider = false
+                        client.server_capabilities.definitionProvider = false
+                    end
 
                     if client:supports_method('textDocument/formatting') then
                         -- Format the current buffer on save

@@ -13,6 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         os.exit(1)
     end
 end
+-- also could be vim.opt.runtimepath
+-- this is telling neovim to put lazy into the runtimepath
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
