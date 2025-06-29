@@ -23,7 +23,7 @@ set $menu fuzzel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg ~/Pictures/space.png fill
+output * bg space.jpg fill
 #
 # Example configuration:
 #
