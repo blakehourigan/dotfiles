@@ -20,7 +20,6 @@ return {
             require("lspconfig").lua_ls.setup { capabililties = capabilities }
             require("lspconfig").rust_analyzer.setup {}
             require("lspconfig").clangd.setup {}
-            require("lspconfig").ardLangServ.setup {}
             require("lspconfig").ruff.setup {}
             require("lspconfig").pyright.setup {
                 settings = {
