@@ -23,7 +23,11 @@ set $menu fuzzel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+<<<<<<< HEAD
 output * bg carina_nebula.jpg fill
+=======
+output * bg space.jpg fill
+>>>>>>> adc3193f14aca25e2ada9e59718fd3cd1fac2135
 #
 # Example configuration:
 #
