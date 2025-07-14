@@ -1,0 +1,11 @@
+[font]
+size=18.0
+
+[terminal]
+shell = { program = "zellij"}
+
+[cursor]
+vi_mode_style={blinking="on"}
+
+
+
