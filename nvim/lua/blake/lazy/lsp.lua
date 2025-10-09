@@ -17,17 +17,17 @@ return {
         },
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
-            require("lspconfig").lua_ls.setup { capabililties = capabilities }
-            require("lspconfig").rust_analyzer.setup {}
-            require("lspconfig").clangd.setup {}
-            require("lspconfig").ruff.setup {}
-            require("lspconfig").pyright.setup {
+            vim.lsp.config('lua_ls', { capabililties = capabilities })
+            vim.lsp.config('rust_analyzer', {})
+            vim.lsp.config('clangd', {})
+            vim.lsp.config('ruff', {})
+            vim.lsp.config('pyright', {
                 settings = {
                     pyright = {
                         disableOrganizeImports = true,
                     },
                 },
-            }
+            })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
