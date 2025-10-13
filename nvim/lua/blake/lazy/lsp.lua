@@ -17,7 +17,24 @@ return {
         },
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
-            vim.lsp.config('lua_ls', { capabililties = capabilities })
+
+            require('lspconfig').csharp_ls.setup{
+                cmd = { "csharp-ls" },
+                filetypes = { "cs" },
+                root_dir = require('lspconfig.util').root_pattern(".git", "*.sln", "*.csproj"),
+                capabilities = capabilities,
+            }
+
+            --[==[
+            vim.lsp.config('csharp_ls', {
+                cmd = { "csharp-ls" },  -- or full path to the binary/script if not in $PATH
+                filetypes = { "cs" },   -- C# files
+                root_dir = require('lspconfig.util').root_pattern(".git", "*.sln", "*.csproj"),
+                capabilities = capabilities,  -- pass your capabilities here if you have any
+            })
+            --]==]
+
+            vim.lsp.config('lua_ls', { capabilities = capabilities })
             vim.lsp.config('rust_analyzer', {})
             vim.lsp.config('clangd', {})
             vim.lsp.config('ruff', {})
