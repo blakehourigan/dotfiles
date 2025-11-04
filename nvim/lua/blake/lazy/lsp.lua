@@ -16,17 +16,40 @@ return {
             },
         },
         config = function()
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            vim.lsp.config['omnisharp'] = {
 
-            vim.lsp.config('csharp_ls', {
-                cmd = { "csharp-ls" },
-                filetypes = { "cs" },
-                root_dir = require('lspconfig.util').root_pattern(".git", "*.sln", "*.csproj"),
-                capabilities = capabilities,
-            })
+                handlers = {
+                    ["textDocument/definition"] = function(...)
+                        return require("omnisharp_extended").handler(...)
+                    end,
+                },
+                enable_roslyn_analyzers = true,
+                organize_imports_on_format = true,
+                enable_import_completion = true,
+            }
 
-            vim.lsp.config('lua_ls', { capabilities = capabilities })
+            vim.lsp.config['luals'] = {
+                -- Command and arguments to start the server.
+                cmd = { 'lua_ls' },
+                -- Filetypes to automatically attach to.
+                filetypes = { 'lua' },
+                -- Sets the "workspace" to the directory where any of these files is found.
+                -- Files that share a root directory will reuse the LSP server connection.
+                -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+                root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+                -- Specific settings to send to the server. The schema is server-defined.
+                -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        }
+                    }
+                }
+            }
+
             vim.lsp.config('rust_analyzer', {})
+            vim.lsp.config('clangd', {})
             vim.lsp.config('clangd', {})
             vim.lsp.config('ruff', {})
             vim.lsp.config('pyright', {
@@ -36,6 +59,9 @@ return {
                     },
                 },
             })
+
+            vim.lsp.enable('luals')
+            vim.lsp.enable('omnisharp')
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
