@@ -1,8 +1,8 @@
 [font]
 size=18.0
 
-[terminal]
-shell = { program = "tmux"}
+[shell]
+program = "tmux"
 
 [cursor]
 vi_mode_style={blinking="on"}

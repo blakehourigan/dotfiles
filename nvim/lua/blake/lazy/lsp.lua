@@ -18,13 +18,6 @@ return {
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-            vim.lsp.config('csharp_ls', {
-                cmd = { "csharp-ls" },
-                filetypes = { "cs" },
-                root_dir = require('lspconfig.util').root_pattern(".git", "*.sln", "*.csproj"),
-                capabilities = capabilities,
-            })
-
             vim.lsp.config('lua_ls', { capabilities = capabilities })
             vim.lsp.config('rust_analyzer', {})
             vim.lsp.config('clangd', {})
@@ -40,6 +33,9 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    local bufnr = args.buf
+                    local builtin = require('telescope.builtin')
+
                     if not client then return end
 
                     if client.name == 'ruff' then
@@ -47,6 +43,12 @@ return {
                         client.server_capabilities.hoverProvider = false
                         client.server_capabilities.definitionProvider = false
                     end
+                    -- get Implementations 
+                    vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { buffer = bufnr, desc = 'Go to Implementation' })
+                    -- get references
+                    vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { buffer = bufnr, desc = 'Find References' })
+                    -- rename across the project
+                    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename Symbol' })
 
                     if client:supports_method('textDocument/formatting') then
                         -- Format the current buffer on save
