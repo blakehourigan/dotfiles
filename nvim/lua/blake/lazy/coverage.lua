@@ -1,4 +1,5 @@
 return  {
+    {
     "andythigpen/nvim-coverage",
     version = "*",
     config = function()
@@ -6,4 +7,5 @@ return  {
             auto_reload = true,
         })
     end,
+    }
 }
