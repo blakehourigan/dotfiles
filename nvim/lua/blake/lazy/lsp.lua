@@ -5,10 +5,9 @@ return {
             'saghen/blink.cmp',
             {
                 "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
+                ft = "lua",     -- only load on lua files
                 opts = {
-                    library = {
-                        -- See the configuration section for more details
+                    library = { -- See the configuration section for more details
                         -- Load luvit types when the `vim.uv` word is found
                         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                     },
@@ -21,21 +20,25 @@ return {
             vim.lsp.config('csharp_ls', {
                 cmd = { "csharp-ls" },
                 filetypes = { "cs" },
-                root_dir = require('lspconfig.util').root_pattern(".git", "*.sln", "*.csproj"),
+                root_dir = require('lspconfig.util')
+                    .root_pattern(".git", "*.sln", "*.csproj"),
                 capabilities = capabilities,
             })
 
             vim.lsp.config('lua_ls', { capabilities = capabilities })
+            vim.lsp.config('yamlfix', {
+                capabilities = capabilities,
+                filetypes = { "yml", "yaml" },
+            })
             vim.lsp.config('rust_analyzer', {})
             vim.lsp.config('clangd', {})
             vim.lsp.config('ruff', {})
-            vim.lsp.config('pyright', {
-                settings = {
-                    pyright = {
-                        disableOrganizeImports = true,
-                    },
-                },
-            })
+            vim.lsp.config('pyright', { settings = {} })
+
+            vim.lsp.enable('lua_ls')
+            vim.lsp.enable('clangd')
+            vim.lsp.enable('luacheck')
+            vim.lsp.enable('yamlfix')
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
