@@ -36,7 +36,9 @@ return {
             vim.lsp.config('lemminx', {
                 filetypes = {"xml", "axaml"}
             })
+
             vim.lsp.enable('lemminx')
+            vim.lsp.enable('clangd')
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
