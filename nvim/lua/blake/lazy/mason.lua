@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-return {
-    {
-        "mason-org/mason.nvim",
-        opts = {}
-    },
-=======
 return{
     {
         "mason-org/mason.nvim",
@@ -16,5 +9,4 @@ return{
 
         }
     }
->>>>>>> 2609a5f018421ae5bddffd28d47f6daf69e6b620
 }
