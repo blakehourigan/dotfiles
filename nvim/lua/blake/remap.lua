@@ -20,6 +20,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
+--vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'Go to Implementation' })
 
 local job_id = 0
 vim.keymap.set("n", "<leader>st", function()

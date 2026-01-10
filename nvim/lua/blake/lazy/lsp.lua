@@ -5,18 +5,24 @@ return {
             'saghen/blink.cmp',
             {
                 "folke/lazydev.nvim",
+<<<<<<< HEAD
                 ft = "lua",     -- only load on lua files
+=======
+>>>>>>> 2609a5f018421ae5bddffd28d47f6daf69e6b620
                 opts = {
                     library = { -- See the configuration section for more details
                         -- Load luvit types when the `vim.uv` word is found
                         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+
                     },
+
                 },
             },
         },
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+<<<<<<< HEAD
             vim.lsp.config('csharp_ls', {
                 cmd = { "csharp-ls" },
                 filetypes = { "cs" },
@@ -25,6 +31,8 @@ return {
                 capabilities = capabilities,
             })
 
+=======
+>>>>>>> 2609a5f018421ae5bddffd28d47f6daf69e6b620
             vim.lsp.config('lua_ls', { capabilities = capabilities })
             vim.lsp.config('yamlfix', {
                 capabilities = capabilities,
@@ -33,16 +41,33 @@ return {
             vim.lsp.config('rust_analyzer', {})
             vim.lsp.config('clangd', {})
             vim.lsp.config('ruff', {})
+<<<<<<< HEAD
             vim.lsp.config('pyright', { settings = {} })
 
             vim.lsp.enable('lua_ls')
             vim.lsp.enable('clangd')
             vim.lsp.enable('luacheck')
             vim.lsp.enable('yamlfix')
+=======
+            vim.lsp.config('pyright', {
+                settings = {
+                    pyright = {
+                        disableOrganizeImports = true,
+                    },
+                },
+            })
+            vim.lsp.config('lemminx', {
+                filetypes = {"xml", "axaml"}
+            })
+            vim.lsp.enable('lemminx')
+>>>>>>> 2609a5f018421ae5bddffd28d47f6daf69e6b620
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    local bufnr = args.buf
+                    local builtin = require('telescope.builtin')
+
                     if not client then return end
 
                     if client.name == 'ruff' then
@@ -50,6 +75,12 @@ return {
                         client.server_capabilities.hoverProvider = false
                         client.server_capabilities.definitionProvider = false
                     end
+                    -- get Implementations 
+                    vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { buffer = bufnr, desc = 'Go to Implementation' })
+                    -- get references
+                    vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { buffer = bufnr, desc = 'Find References' })
+                    -- rename across the project
+                    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename Symbol' })
 
                     if client:supports_method('textDocument/formatting') then
                         -- Format the current buffer on save
