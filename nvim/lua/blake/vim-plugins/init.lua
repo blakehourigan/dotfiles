@@ -1,6 +1,8 @@
 -- grab me plugins
 
 vim.pack.add({
+    { src = "https://github.com/folke/tokyonight.nvim", version = 'main' },
+    -------------------------------------------------------------------
     { src = "https://github.com/nvim-lua/plenary.nvim", version = 'master'},
     { src = "https://github.com/ThePrimeagen/harpoon", version = 'harpoon2'},
     -------------------------------------------------------------------
@@ -19,11 +21,16 @@ vim.pack.add({
     -------------------------------------------------------------------
     { src = "https://github.com/neovim/nvim-lspconfig", version = 'master' },
     -------------------------------------------------------------------
-    { src = "https://github.com/seblyng/roslyn.nvim", version = 'main' }
+    { src = "https://github.com/seblyng/roslyn.nvim", version = 'main' },
+    -------------------------------------------------------------------
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = 'main' },
 })
 
 -- add builtin packages to this session 
 vim.cmd("packadd nvim.undotree")
+
+-- activate the colorscheme
+vim.cmd("colorscheme tokyonight")
 
 -- setups 
 require("harpoon").setup()
@@ -45,6 +52,17 @@ require("mason").setup(
         },
     }
 )
+
+local ts_parsers = { 
+    "c", "lua", "rust", "python", "c_sharp", 
+    "yaml",     
+    "bash",
+    "vim", "vimdoc", 
+    "markdown", 
+}
+
+local nts = require("nvim-treesitter")
+nts.install(ts_parsers)
 
 -- my config of the plugins
 require("blake.vim-plugins.harpoon")

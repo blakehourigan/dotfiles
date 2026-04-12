@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "apple.nvim": {
+      "rev": "bb6a8dcc904da47601836207aa99278c2bdb6025",
+      "src": "https://github.com/cemkagank/apple.nvim"
+    },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim",
@@ -30,6 +34,11 @@
       "src": "https://github.com/neovim/nvim-lspconfig",
       "version": "'master'"
     },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim",
@@ -49,6 +58,11 @@
       "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
       "version": "'master'"
+    },
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim",
+      "version": "'main'"
     },
     "typr": {
       "rev": "584e4ef34dea25a4035627794322f315b22d1253",
