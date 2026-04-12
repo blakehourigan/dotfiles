@@ -1,5 +1,7 @@
 -- grab me plugins
 
+-- consider coverage
+
 vim.pack.add({
     { src = "https://github.com/folke/tokyonight.nvim", version = 'main' },
     -------------------------------------------------------------------
