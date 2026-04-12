@@ -20,7 +20,8 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
---vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'Go to Implementation' })
+
+vim.keymap.set("n", "<leader>qq", ":q<CR>")
 
 local job_id = 0
 vim.keymap.set("n", "<leader>st", function()
@@ -31,14 +32,4 @@ vim.keymap.set("n", "<leader>st", function()
     job_id = vim.bo.channel
     local key = vim.api.nvim_replace_termcodes("<C-w>k", true, false, true)
     vim.api.nvim_feedkeys(key, 't', false)
-end)
-
-vim.keymap.set("n", "<leader>of", function()
-    -- simple examble but could be
-    -- go build or
-    -- make
-    vim.fn.chansend(job_id, ("firefox " .. vim.fn.expand('%:p') .. "\r\n"))
-end)
-vim.keymap.set("n", "<leader>d", function()
-    vim.lsp.buf.definition()
 end)

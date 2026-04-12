@@ -1,3 +1,5 @@
 require("blake.set")
 require("blake.remap")
-require("blake.lazy_init")
+require("blake.vim-plugins")
+
+require('vim._core.ui2').enable()
