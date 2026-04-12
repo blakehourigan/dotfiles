@@ -35,6 +35,11 @@
       "src": "https://github.com/nvim-lua/plenary.nvim",
       "version": "'master'"
     },
+    "roslyn.nvim": {
+      "rev": "f2ec6ee6384c3b611ddc817b9e78b20cd0334bbb",
+      "src": "https://github.com/seblyng/roslyn.nvim",
+      "version": "'main'"
+    },
     "telescope-fzf-native.nvim": {
       "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim",

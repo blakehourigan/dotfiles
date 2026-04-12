@@ -17,8 +17,9 @@ vim.pack.add({
     -------------------------------------------------------------------
     { src = "https://github.com/mason-org/mason.nvim", version = 'main'}, 
     -------------------------------------------------------------------
-    { src = "https://github.com/neovim/nvim-lspconfig", version = 'master' }
+    { src = "https://github.com/neovim/nvim-lspconfig", version = 'master' },
     -------------------------------------------------------------------
+    { src = "https://github.com/seblyng/roslyn.nvim", version = 'main' }
 })
 
 -- add builtin packages to this session 
