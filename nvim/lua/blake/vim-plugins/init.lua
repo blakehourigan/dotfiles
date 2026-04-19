@@ -26,6 +26,10 @@ vim.pack.add({
     { src = "https://github.com/seblyng/roslyn.nvim",                      version = 'main' },
     -------------------------------------------------------------------
     { src = "https://github.com/nvim-treesitter/nvim-treesitter",          version = 'main' },
+    -------------------------------------------------------------------
+    { src = "https://github.com/mfussenegger/nvim-dap",                    version = 'master' },
+    { src = "https://github.com/nvim-neotest/nvim-nio",                    version = 'master' },
+    { src = "https://github.com/rcarriga/nvim-dap-ui",                     version = 'master' },
 })
 
 -- add builtin packages to this session
@@ -54,6 +58,8 @@ require("mason").setup(
     }
 )
 
+require("dapui").setup()
+
 local ts_parsers = {
     "c", "lua", "rust", "python", "c_sharp",
     "yaml",
@@ -72,3 +78,4 @@ require("blake.vim-plugins.undotree")
 require("blake.vim-plugins.telescope-cfg")
 require("blake.vim-plugins.neogit")
 require("blake.vim-plugins.lsp")
+require("blake.vim-plugins.dap")
