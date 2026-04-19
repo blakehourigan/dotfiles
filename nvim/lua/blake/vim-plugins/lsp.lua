@@ -1,12 +1,35 @@
-vim.lsp.config('lua_ls', { capabilities = capabilities })
-
-vim.lsp.config('yamlfix', {
-    capabilities = capabilities,
-    filetypes = { "yml", "yaml" },
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            codeLens = { enable = true },
+            diagnostics = {
+                globals = { "vim" },
+            }
+        }
+    }
 })
 
-vim.lsp.config('rust_analyzer', {})
-vim.lsp.config('clangd', {})
+-- config soured from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+vim.lsp.config('rust_analyzer', {
+    cmd = { 'rust_analyzer' },
+    filetypes = { 'rust' },
+})
+
+-- config soured from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+vim.lsp.config('clangd', {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp' },
+    root_markers = {
+        '.clangd',
+        '.clangd-tidy',
+        '.clang-format',
+        'compile_commands.json',
+        'compile_flags.txt',
+        'configure.ac',
+        '.git'
+    }
+})
+
 vim.lsp.config('ruff', {})
 vim.lsp.config('pyright', {
     settings = {
@@ -15,45 +38,52 @@ vim.lsp.config('pyright', {
         },
     },
 })
+
 vim.lsp.config('lemminx', {
-    filetypes = {"xml", "axaml"}
+    filetypes = { "xml", "axaml" }
+})
+
+vim.lsp.config('yamlfix', {
+    filetypes = { "yml", "yaml" },
 })
 
 vim.lsp.enable('rust_analyzer', {})
-vim.lsp.enable('lemminx')
 vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('lemminx')
+vim.lsp.enable('yamlfix')
+vim.lsp.enable('lua-format')
 
+-- sourced from 'h lsp-attach'
 vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        local bufnr = args.buf
-        local builtin = require('telescope.builtin')
+    group = vim.api.nvim_create_augroup('my.lsp', {}),
+    callback = function(ev)
+        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
 
-        if not client then return end
-
-        if client.name == 'ruff' then
-            --disable hover in favor of pyright
-            client.server_capabilities.hoverProvider = false
-            client.server_capabilities.definitionProvider = false
+        if client:supports_method('textDocument/definition') then
+            vim.keymap.set("n", "grd", vim.lsp.buf.definition)
         end
-        -- get Implementations 
-        vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { buffer = bufnr, desc = 'Go to Implementation' })
-        -- get references
-        vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { buffer = bufnr, desc = 'Find References' })
-        -- rename across the project
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename Symbol' })
 
-        vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition)
+        -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+        if client:supports_method('textDocument/completion') then
+            -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+            -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+            -- client.server_capabilities.completionProvider.triggerCharacters = chars
 
-        if client:supports_method('textDocument/formatting') then
-            -- Format the current buffer on save
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+        end
+
+        -- Auto-format ("lint") on save.
+        -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+        if not client:supports_method('textDocument/willSaveWaitUntil')
+            and client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
-                buffer = args.buf,
+                group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+                buffer = ev.buf,
                 callback = function()
-                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                    vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
                 end,
             })
         end
     end,
 })
-
