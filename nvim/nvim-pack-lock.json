@@ -4,6 +4,11 @@
       "rev": "bb6a8dcc904da47601836207aa99278c2bdb6025",
       "src": "https://github.com/cemkagank/apple.nvim"
     },
+    "devcontainer-cli.nvim": {
+      "rev": "a92bae84eedaadcef1a0fcabb9d58a3c2bc28ebc",
+      "src": "https://github.com/erichlf/devcontainer-cli.nvim",
+      "version": "'main'"
+    },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim",
@@ -13,6 +18,10 @@
       "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
+    },
+    "main": {
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "src": "https://github.com/catppuccin/nvim"
     },
     "mason.nvim": {
       "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
@@ -58,6 +67,11 @@
       "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
       "version": "'master'"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim",
+      "version": "'main'"
     },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
