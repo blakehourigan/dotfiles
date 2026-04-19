@@ -47,12 +47,25 @@ vim.lsp.config('yamlfix', {
     filetypes = { "yml", "yaml" },
 })
 
+vim.lsp.config('bash-language-server', {
+    cmd = { 'bash-language-server', 'start' },
+    filetypes = { 'bash', 'sh' }
+})
+
+vim.lsp.config('language-server-bitbake', {
+    cmd = { "language-server-bitbake", "--stdio" }, 
+    filetypes = { 'bitbake' },
+    root_markers = { '.git' },
+})
+
 vim.lsp.enable('rust_analyzer', {})
 vim.lsp.enable('clangd')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('lemminx')
 vim.lsp.enable('yamlfix')
 vim.lsp.enable('lua-format')
+vim.lsp.enable('language-server-bitbake')
+vim.lsp.enable('bash-language-server')
 
 -- sourced from 'h lsp-attach'
 vim.api.nvim_create_autocmd('LspAttach', {
