@@ -11,12 +11,3 @@ end
 )
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		if vim.bo.buftype == 'nofile' then
-			vim.opt.autocomplete = false
-			return
-		end
-		vim.opt.autocomplete = true
-	end,
-})
