@@ -53,17 +53,17 @@ vim.lsp.config('bash-language-server', {
 })
 
 vim.lsp.config('language-server-bitbake', {
-    cmd = { "language-server-bitbake", "--stdio" }, 
+    cmd = { "language-server-bitbake", "--stdio" },
     filetypes = { 'bitbake' },
     root_markers = { '.git' },
 })
 
 vim.lsp.enable('rust_analyzer', {})
 vim.lsp.enable('clangd')
-vim.lsp.enable('lua_ls')
+vim.lsp.enable('lua-language-server')
+vim.lsp.enable('lua-format')
 vim.lsp.enable('lemminx')
 vim.lsp.enable('yamlfix')
-vim.lsp.enable('lua-format')
 vim.lsp.enable('language-server-bitbake')
 vim.lsp.enable('bash-language-server')
 
