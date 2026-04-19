@@ -21,7 +21,8 @@ vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
-vim.keymap.set("n", "<leader>qq", ":q<CR>")
+vim.keymap.set("n", "<leader>qw", ":q<CR>")
+vim.keymap.set("n", "<leader>qt", ":tabc<CR>")
 
 vim.keymap.set("n", "<leader>st", function()
     vim.cmd.vnew()
