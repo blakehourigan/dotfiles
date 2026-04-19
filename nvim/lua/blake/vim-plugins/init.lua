@@ -26,10 +26,6 @@ vim.pack.add({
     { src = "https://github.com/seblyng/roslyn.nvim",                      version = 'main' },
     -------------------------------------------------------------------
     { src = "https://github.com/nvim-treesitter/nvim-treesitter",          version = 'main' },
-    -------------------------------------------------------------------
-    { src = "https://github.com/akinsho/toggleterm.nvim",                  version = 'main' },
-    { src = "https://github.com/erichlf/devcontainer-cli.nvim",            version = 'main' },
-
 })
 
 -- add builtin packages to this session
@@ -90,4 +86,3 @@ require("blake.vim-plugins.undotree")
 require("blake.vim-plugins.telescope-cfg")
 require("blake.vim-plugins.neogit")
 require("blake.vim-plugins.lsp")
-require("blake.vim-plugins.devcontainer-cfg")
