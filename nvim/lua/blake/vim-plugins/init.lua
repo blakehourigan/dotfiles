@@ -54,20 +54,6 @@ require("mason").setup(
     }
 )
 
-require("toggleterm").setup()
-
-require("devcontainer-cli").setup(
-    {
-        interactive = false,
-        toplevel = true,
-        remove_existing_container = true,
-        shell = "bash",
-        nvim_binary = "nvim",
-        log_level = "debug",
-        console_level = "info"
-    }
-)
-
 local ts_parsers = {
     "c", "lua", "rust", "python", "c_sharp",
     "yaml",
