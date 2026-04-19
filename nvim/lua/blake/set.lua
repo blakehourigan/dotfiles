@@ -41,6 +41,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
 
 vim.filetype.add({
     extension = {
-        axaml = "xml", 
+        axaml = "xml",
     },
 })
