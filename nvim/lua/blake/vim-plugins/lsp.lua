@@ -9,13 +9,13 @@ vim.lsp.config('lua_ls', {
     }
 })
 
--- config soured from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+-- config sourced from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 vim.lsp.config('rust_analyzer', {
     cmd = { 'rust_analyzer' },
     filetypes = { 'rust' },
 })
 
--- config soured from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+-- config sourced from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 vim.lsp.config('clangd', {
     cmd = { 'clangd' },
     filetypes = { 'c', 'cpp' },
