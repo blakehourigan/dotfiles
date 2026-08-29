@@ -1,11 +1,1 @@
-[font]
-size=18.0
-
-[terminal.shell]
-program = "tmux"
-
-[cursor]
-vi_mode_style={blinking="on"}
-
-
-
+alacritty-14-plus.toml

@@ -1,0 +1,10 @@
+shell = { program = "/usr/bin/zsh", args = ["-c", "zellij"] } 
+
+[font]
+size=18.0
+
+[cursor]
+vi_mode_style={blinking="on"}
+
+
+
