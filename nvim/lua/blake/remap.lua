@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>jk", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>jk", ":edit .<CR>")
 
 vim.keymap.set("n", "<leader>/", vim.cmd.noh)
 

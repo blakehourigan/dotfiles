@@ -36,7 +36,7 @@ vim.pack.add({
 vim.cmd("packadd nvim.undotree")
 
 -- activate the colorscheme
-vim.cmd("colorscheme catppuccin-nvim")
+--vim.cmd("colorscheme catppuccin-nvim")
 
 -- setups
 require("harpoon").setup()
@@ -49,33 +49,33 @@ require("telescope").setup({
     }
 })
 
-require("mason").setup(
-    {
-        registries = {
-            "github:Crashdummyy/mason-registry", -- The Roslyn/C# registry
-            "github:mason-org/mason-registry",   -- The default registry
-        },
-    }
-)
+--require("mason").setup(
+--    {
+--        registries = {
+--            "github:Crashdummyy/mason-registry", -- The Roslyn/C# registry
+--            "github:mason-org/mason-registry",   -- The default registry
+--        },
+--    }
+--)
 
-require("dapui").setup()
+--require("dapui").setup()
 
-local ts_parsers = {
-    "c", "lua", "rust", "python", "c_sharp",
-    "yaml",
-    "bash",
-    "vim", "vimdoc",
-    "markdown",
-}
+--local ts_parsers = {
+--    "c", "lua", "rust", "python", "c_sharp",
+--    "yaml",
+--    "bash",
+--    "vim", "vimdoc",
+--    "markdown",
+--}
 
-local nts = require("nvim-treesitter")
-nts.install(ts_parsers)
+--local nts = require("nvim-treesitter")
+--nts.install(ts_parsers)
 
 -- my config of the plugins
 require("blake.vim-plugins.harpoon-cfg")
-require("blake.vim-plugins.Typr")
+--require("blake.vim-plugins.Typr")
 require("blake.vim-plugins.undotree")
 require("blake.vim-plugins.telescope-cfg")
-require("blake.vim-plugins.neogit")
-require("blake.vim-plugins.lsp")
-require("blake.vim-plugins.dap")
+--require("blake.vim-plugins.neogit")
+--require("blake.vim-plugins.lsp")
+--require("blake.vim-plugins.dap")
