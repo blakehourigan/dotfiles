@@ -1,0 +1,26 @@
+diff --git a/.devcontainer.json b/.devcontainer.json
+index 574946c..11dd181 100644
+--- a/.devcontainer.json
++++ b/.devcontainer.json
+@@ -5,9 +5,11 @@
+     "mounts": [
+         "source=${localWorkspaceFolder}/../common-cpp,target=/data/common-cpp,type=bind",
+         "source=${localWorkspaceFolder}/../atlasied-schema,target=/data/atlasied-schema,type=bind",
+-        "source=${localWorkspaceFolder}/../alpha-king-schema,target=/data/alpha-king-schema,type=bind"
++        "source=${localWorkspaceFolder}/../alpha-king-schema,target=/data/alpha-king-schema,type=bind",
++        "source=/home/blake-hourigan/dotfiles/nvim,target=/root/.config/nvim,type=bind",
++        "source=/home/blake-hourigan/.npm-global/lib/node_modules/tree-sitter-cli/tree-sitter,target=/usr/local/bin/tree-sitter,type=bind"
+     ],
+-    "postCreateCommand": "apt update && apt install -y gdb && git config --global --add safe.directory /data/dozer && rm -rf /var/lib/apt/lists/*",
++    "postCreateCommand": "apt update && apt install -y gdb rsync ripgrep && ./neovim.sh && git config --global --add safe.directory /data/dozer && rm -rf /var/lib/apt/lists/* ",
+     "runArgs": [
+         "--name=dozer-devcontainer"
+     ],
+@@ -24,4 +26,5 @@
+             ]
+         }
+     }
+-}
+\ No newline at end of file
++}
++
